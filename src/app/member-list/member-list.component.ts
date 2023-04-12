@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Member } from 'src/Modals/member';
-import { GLOBAL } from '../app-confing';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MemberService } from '../member.service';
 
 
@@ -11,12 +12,25 @@ import { MemberService } from '../member.service';
 })
 
 export class MemberListComponent {
-  constructor(private MS: MemberService) {}
-  dataSource :Member[]=this.MS.tab
+  constructor(private MS: MemberService, private dialog: MatDialog) { }
   displayedColumns: string[] = ['id', 'cin', 'name', 'createdDate', 'cv', 'type', 'icons'];
-  onDelete(id: string):void {
-    this.MS.DeleteMemberById(id).then (()=>{
-      this.dataSource=this.MS.tab
+  dataSource = new MatTableDataSource(this.MS.tab);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  onDelete(id: string): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    });
+
+    dialogRef.afterClosed().pipe().subscribe((x) => {
+      if (x) {
+        this.MS.DeleteMemberById(id).then(() => {
+          this.dataSource.data = this.MS.tab
+        })
+      }
     })
   }
 }

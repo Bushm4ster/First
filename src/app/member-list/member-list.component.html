@@ -6,7 +6,10 @@
   >
     Create New
   </button>
-
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-responsive">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -48,6 +51,7 @@
     </ng-container>
 
     <!-- type Column -->
+
     <ng-container matColumnDef="icons">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">

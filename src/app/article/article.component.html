@@ -1,0 +1,71 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-responsive">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <!-- titre Column -->
+    <ng-container matColumnDef="titre">
+      <th mat-header-cell *matHeaderCellDef>Titre</th>
+      <td mat-cell *matCellDef="let element">{{ element.titre }}</td>
+    </ng-container>
+
+    <!-- type Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+    </ng-container>
+
+    <!-- dateApparition Column -->
+    <ng-container matColumnDef="dateApparition">
+      <th mat-header-cell *matHeaderCellDef>Date Apparition</th>
+      <td mat-cell *matCellDef="let element">{{ element.dateApparition }}</td>
+    </ng-container>
+
+    <!-- auteur Column -->
+    <ng-container matColumnDef="auteur">
+      <th mat-header-cell *matHeaderCellDef>Auteur</th>
+      <td mat-cell *matCellDef="let element">{{ element.auteur }}</td>
+    </ng-container>
+
+    <!-- icons Column -->
+
+    <ng-container matColumnDef="icons">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Example icon button with a menu icon"
+            class="editIcon"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Example icon button with a menu icon"
+            class="deleteIcon"
+            (click)="onDelete(element.id)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Example icon button with a menu icon"
+            class="deleteIcon"
+            routerLink="/affect/{{element.id}}"
+          >
+            <mat-icon>add_circle</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>

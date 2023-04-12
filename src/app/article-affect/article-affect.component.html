@@ -1,0 +1,11 @@
+<br>
+<form>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose Member</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option >None</mat-option>
+        <mat-option *ngFor = "let element of tab" value="{{element.id}}">{{element.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="add(selected)">OK</button>
+</form>

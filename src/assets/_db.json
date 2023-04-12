@@ -3,7 +3,7 @@
         {
             "id": "1",
             "cin": "123456",
-            "name": "Bush",
+            "name": "Bushmaster",
             "createdDate": "1/31/2023",
             "cv": "lien",
             "type": "teacher"
@@ -11,7 +11,7 @@
         {
             "id": "2",
             "cin": "12345",
-            "name": "Bush",
+            "name": "Bumshaster",
             "createdDate": "1/31/2023",
             "cv": "lien",
             "type": "teacher"
@@ -19,10 +19,28 @@
         {
             "id": "3",
             "cin": "1234",
-            "name": "Bush",
+            "name": "Tijeni Basla",
             "createdDate": "1/31/2023",
             "cv": "lien",
             "type": "teacher"
+        }
+    ],
+    "articles":[
+        {
+            "id": "12345",
+            "titre": "TITRE1",
+            "type": "scientifique",
+            "dateApparition": "12/12/2012",
+            "sourcePdf": "lien",
+            "auteur": ""
+        }
+    ],
+    "events":[
+        {
+            "id": "1",
+            "title": "conference",
+            "start": "11/12/2023",
+            "end": "12/12/2023"
         }
     ]
 }

@@ -19,8 +19,8 @@ export class MemberService {
 
     const NewMember ={
       ...memberToSave,
-      id: Math.ceil(Math.random()*1000).toString(), 
-      createdDate :  new Date().toISOString()
+      id: memberToSave.id ?? Math.ceil(Math.random()*1000).toString(), 
+      createdDate : memberToSave.createdDate ?? new Date().toISOString()
     }
 
     this.tab=[NewMember,...this.tab.filter(item => item.id != NewMember.id)]
@@ -31,5 +31,16 @@ export class MemberService {
     this.tab=this.tab.filter(item => item.id != id)
     return new Promise<void>(resolve => resolve()) 
     //return this.HttpClient.delete<void>('link').toPromise(); //use incase of backend existance
+  }
+  getMemberByid(id:string):Promise<Member>{
+    return (new Promise (resolve => resolve(
+      this.tab.filter(item=>item.id == id)[0]??null
+    )))
+  }
+
+  getMemberById(id:string):Promise<Member|undefined>{
+    return (new Promise (resolve => resolve(
+      this.tab.find(item => item.id == id)
+    )))
   }
 }
