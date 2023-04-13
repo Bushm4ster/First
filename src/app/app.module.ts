@@ -34,6 +34,7 @@ import { MatCardModule } from '@angular/material/card';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -51,7 +52,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     EventComponent,
     ArticleAffectComponent,
     LoginComponent,
-    EventCreateComponent
+    EventCreateComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

@@ -32,5 +32,9 @@ export class EventService {
     this.tabEvent = [NewEvent, ...this.tabEvent.filter(item => item.id != NewEvent.id)]
     return new Observable(observer => {observer.next()});
   }
-  
+  getEvtById(id: string): Observable<Event> {
+    return new Observable(observer => {
+      observer.next(this.tabEvent.filter(item => item.id == id)[0]??null);
+    });
+  }
 }

@@ -26,13 +26,26 @@
     <!-- dateDebut Column -->
     <ng-container matColumnDef="start">
       <th mat-header-cell *matHeaderCellDef>Date Debut</th>
-      <td mat-cell *matCellDef="let element">{{ element.start }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.start|date:'dd-MM-yyyy' }}</td>
     </ng-container>
 
     <!-- dateFin Column -->
     <ng-container matColumnDef="end">
       <th mat-header-cell *matHeaderCellDef>Date Fin</th>
-      <td mat-cell *matCellDef="let element">{{ element.end }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.end|date:'dd-MM-yyyy' }}</td>
+    </ng-container>
+    <!-- icons -->
+    <ng-container matColumnDef="icons">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="get(element.id)"
+        >
+          <mat-icon>remove_red_eye</mat-icon>
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
